@@ -50,7 +50,7 @@ var (
 
 func init() {
 	sharedFlags = append(sharedFlags, "-trimpath")
-	sharedFlags = append(sharedFlags, "-buildvcs=false")
+	// sharedFlags = append(sharedFlags, "-buildvcs=false")
 	currentTag, err := build_shared.ReadTag()
 	if err != nil {
 		currentTag = "unknown"
@@ -97,7 +97,7 @@ func buildAndroid() {
 		"-target", bindTarget,
 		"-androidapi", "21",
 		"-javapkg=io.nekohasekai",
-		"-libname=box",
+		// "-libname=box",
 	}
 	if !debugEnabled {
 		args = append(args, sharedFlags...)
@@ -147,7 +147,7 @@ func buildApple() {
 		"bind",
 		"-v",
 		"-target", bindTarget,
-		"-libname=box",
+		// "-libname=box",
 	}
 	if !debugEnabled {
 		args = append(args, sharedFlags...)
