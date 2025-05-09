@@ -51,7 +51,7 @@ type HTTPRequest interface {
 
 type HTTPResponse interface {
 	GetContent() (*StringBox, error)
-	GetSubscriptionInfo() *StringBox
+	GetSubscriptionInfo() string
 	WriteTo(path string) error
 }
 
@@ -228,8 +228,8 @@ func (h *httpResponse) GetContent() (*StringBox, error) {
 	return wrapString(string(h.content)), nil
 }
 
-func (h *httpResponse) GetSubscriptionInfo() *StringBox {
-	return wrapString(h.Header.Get("subscription-userinfo"))
+func (h *httpResponse) GetSubscriptionInfo() string {
+	return h.Header.Get("subscription-userinfo")
 }
 
 func (h *httpResponse) WriteTo(path string) error {
